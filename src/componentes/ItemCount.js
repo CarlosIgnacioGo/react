@@ -1,4 +1,3 @@
-
 import react, {useState } from "react";
 
 export const ItemCount = ({stock, initial, onAdd}) => {
