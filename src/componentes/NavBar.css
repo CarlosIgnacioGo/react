@@ -1,0 +1,12 @@
+div {
+    display: inline;
+    list-style: none;
+    background-color: aqua;
+    margin: 25px, 25px;
+}
+
+a { 
+    list-style: none;
+    margin: 50px;
+    color: blueviolet;
+}
