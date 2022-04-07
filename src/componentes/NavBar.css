@@ -1,12 +1,17 @@
-div {
+nav {
     display: inline;
     list-style: none;
-    background-color: aqua;
     margin: 25px, 25px;
+    text-align: left;
 }
 
 a { 
     list-style: none;
     margin: 50px;
     color: blueviolet;
+}
+
+img {
+    width: 65px;
+    height: 65px;
 }
