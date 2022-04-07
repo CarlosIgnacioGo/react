@@ -1,0 +1,22 @@
+.container-item-detail{
+    display: inline-block;
+    background-color: rgba(240, 237, 179, 0.88);
+    width: 50%;
+    text-align: center;
+}
+
+.btn-ver-detalle{
+    background-color: rgba(238, 244, 50, 0.629);
+    color: azure;
+    padding: 5px 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+.img-producto{
+    width: 120px;
+    height: 120px;
+    margin: 10%;
+}

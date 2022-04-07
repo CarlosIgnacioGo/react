@@ -15,28 +15,30 @@ const NavBar = () => {
 
     return (
 
-        <>
+        <div className="navBar-styles">
             <NavLink to="/">
                 <img src={logo} alt="logo"/>
             </NavLink>
             
-            <nav>
+            <nav className="barra-nav">
                 
                 {categorias.map((categoria)=>{
                     return(
                         <NavLink to={categoria.route}>{categoria.name}</NavLink>
                     )
                 })}
+
+                <NavLink to="/carrito">
+                    <CarWidget/>
+                </NavLink>
             </nav>
 
 
             <h1>Sun Store</h1>
             <div>
-            <NavLink to="/carrito">
-                <CarWidget/>
-            </NavLink>
+            
             </div>
-        </>
+        </div>
     )
 }
 
