@@ -28,13 +28,14 @@ const ItemDetailContainer = () => {
         .then((producto) => {
             if (id) {
             setProducto(producto.find(el => el.id === id));
+            console.log ("Estos son los:" +producto );
         }else{setProducto ("No existe")}
         })
 
     }, [id])
    
     return (
-        <ItemDetail producto={producto} key = {producto.id} />
+        <ItemDetail producto={producto}  />
     )
 };
 
