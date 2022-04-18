@@ -6,11 +6,14 @@ import NavBar from './componentes/NavBar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Carrito from './componentes/Carrito';
 import { Cart } from './componentes/Cart';
+import customProvider from './componentes/CartContext';
 
 function App() {
   
   return (
     <BrowserRouter>
+
+    <customProvider>
       <div>
         <  NavBar />
         < ItemDetailContainer/>
@@ -23,6 +26,8 @@ function App() {
         <Route path="/carrito" element={<Carrito/> }/>
         <Route path="/cart" element={<Cart/> }/>
       </Routes>
+
+      </customProvider>
     </BrowserRouter>
   );
 }

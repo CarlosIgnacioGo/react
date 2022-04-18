@@ -1,6 +1,6 @@
 const Carrito = () => {
     return (
-        <h1>Tu carrito de compra bb</h1>
+        <h1>Tu carrito de compra</h1>
     )
 }
 

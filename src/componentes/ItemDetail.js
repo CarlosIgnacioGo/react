@@ -13,7 +13,7 @@ export const ItemDetail = ({producto}) => {
     }
    
     return (
-        <div>
+        <div className='potito'>
 
             <img src={producto.img} />
             <h1>{producto.name}</h1>
