@@ -1,19 +1,24 @@
 import './ItemDetail.css';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { ItemCount } from './ItemCount';
 import { Link } from 'react-router-dom';
+import { Contexto } from './CartContext';
 
 export const ItemDetail = ({producto}) => {
+
+    const {addItem} = useContext(Contexto)
 
     const [cart, setCart] = useState (false);
 
     const onAdd = (contador) => {
         setCart(producto);
         alert (`agregaste ${contador} elementos al carro`);
+        addItem (producto, contador);
     }
+
    
     return (
-        <div className='potito'>
+        <div>
 
             <img src={producto.img} />
             <h1>{producto.name}</h1>

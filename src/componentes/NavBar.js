@@ -24,7 +24,7 @@ const NavBar = () => {
                 
                 {categorias.map((categoria)=>{
                     return(
-                        <NavLink to={categoria.route}>{categoria.name}</NavLink>
+                        <NavLink key={categoria.id} to={categoria.route}>{categoria.name}</NavLink>
                     )
                 })}
 
