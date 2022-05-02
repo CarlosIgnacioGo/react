@@ -1,8 +1,9 @@
 import { ItemDetail } from "./ItemDetail";
-import React, {useEffect, useState} from 'react'
+import { doc, getDoc, collection} from "firebase/firestore";
+import React, {useEffect, useState} from 'react';
 import { useParams } from "react-router-dom";
 import aros from "../SunStore/aros.jpg";
-
+import { db } from "../firebase/firebase";
 
 const ItemDetailContainer = () => {
     const [producto, setProducto] = useState({})
@@ -22,9 +23,16 @@ const ItemDetailContainer = () => {
         },100)
     });
 
-
-    
     useEffect ( () => {
+        const productsCollection = collection(db, "items");
+        const ref = doc(productsCollection,id)
+        getDoc(ref)
+        .then((result)=>{
+            setProducto(result.data());
+        })
+
+
+
         promesaDetail
         .then((producto) => {
             console.log("estoy aqui" + id)
@@ -36,7 +44,7 @@ const ItemDetailContainer = () => {
             }else{
                 setProducto ("No existe")
             }
-        })
+        }) 
 
     }, [id])
    

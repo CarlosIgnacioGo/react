@@ -1,9 +1,12 @@
 import React from "react";
 import "./ItemListContainer.css"
+import { getDocs, collection, query } from "firebase/firestore";
 import { ItemCount } from "./ItemCount";
 import { useEffect, useState } from "react";
 import { ItemList } from "./ItemList";
 import strap1 from "../SunStore/strap.jpg";
+import { db } from "../firebase/firebase";
+
 
 const productosIniciales = [
     {id: 1, name: "Aros", valor: 1200, stock: 5, img: "https://cdn.shopify.com/s/files/1/1939/5891/products/argollas-xl_-cuff-circon-y-victoria_946ec432-601a-401a-bc32-859dd6233dad_1200x1200.jpg?v=1628706583"},
@@ -13,6 +16,9 @@ const productosIniciales = [
 ]
 
 const ItemListContainer = (props) => {
+
+    console.log(db);
+
     const [productos, setProductos] = useState ([])
 
     const promesa = new Promise ( (resolve, reject) => {
@@ -25,7 +31,31 @@ const ItemListContainer = (props) => {
 
 
     useEffect ( () => {
+        
+        const productosCollection = collection (db, "items")
+        const quet = query(productosCollection )
+        getDocs(productosCollection)
+        .then((result)=>{
+            const docs = result.docs;
+            const lista = docs.map ( producto => {
+                const id = producto.id
+                const product = {
+                    id,
+                    ...producto.data()
+                }
+                return product;
+            })
+            setProductos(lista);
+        })
+        .catch(error => {console.log(error)})
+        .finally(()=> {
+            
+        })
     
+
+
+
+
         promesa.then(()=>{
         setProductos (productosIniciales);
         console.log("Todo bien");
