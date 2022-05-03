@@ -1,11 +1,12 @@
 import React from "react";
 import "./ItemListContainer.css"
-import { getDocs, collection, query } from "firebase/firestore";
+import { getDocs, collection, query, where } from "firebase/firestore";
 import { ItemCount } from "./ItemCount";
 import { useEffect, useState } from "react";
 import { ItemList } from "./ItemList";
 import strap1 from "../SunStore/strap.jpg";
 import { db } from "../firebase/firebase";
+import { useParams } from "react-router-dom";
 
 
 const productosIniciales = [
@@ -19,7 +20,10 @@ const ItemListContainer = (props) => {
 
     console.log(db);
 
-    const [productos, setProductos] = useState ([])
+    const [productos, setProductos] = useState ([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+
 
     const promesa = new Promise ( (resolve, reject) => {
         
@@ -29,30 +33,49 @@ const ItemListContainer = (props) => {
         },200)
     });
 
+    const { categoryId } = useParams();
 
     useEffect ( () => {
-        
-        const productosCollection = collection (db, "items")
-        const quet = query(productosCollection )
-        getDocs(productosCollection)
-        .then((result)=>{
-            const docs = result.docs;
-            const lista = docs.map ( producto => {
-                const id = producto.id
-                const product = {
-                    id,
-                    ...producto.data()
-                }
-                return product;
-            })
-            setProductos(lista);
-        })
-        .catch(error => {console.log(error)})
-        .finally(()=> {
-            
-        })
-    
 
+        const getItems = async () => {
+        
+        try {
+        
+            const productosCollection = collection (db, "items")
+            const quet = query(productosCollection, where("category", "==", categoryId) )
+            const consult = categoryId ? quet : productosCollection
+            getDocs(consult)
+            .then((result)=>{
+                const docs = result.docs;
+                if (docs.length > 0){}
+                else{
+                    return(
+                        <h2>No hay productos</h2>
+                    );
+                }
+
+                const lista = docs.map ( (producto) => {
+                    const id = producto.id
+                    const product = {
+                        id,
+                        ...producto.data()
+                    };
+                    return product;
+                });
+                console.log(lista);
+                setProductos(lista);
+                
+            });
+            
+           } catch {
+                setError(true);
+            } finally {
+                setLoading(false);
+            }
+        
+       
+       }
+    
 
 
 

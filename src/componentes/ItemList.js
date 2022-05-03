@@ -6,13 +6,13 @@ export const ItemList = (props) => {
     console.log(props.productos);
     return (
         <>
-        <div className="contenedor-de-todos-productos">
-            {props.productos.map( (producto, index) => {
-                return(
-                    <Item key={index} producto={producto} saludo="Hola" />
-                )
-            } )}
-        </div>
+            <div className="contenedor-de-todos-productos">
+                {props.productos.map( (producto, index) => {
+                    return(
+                        <Item key={index} producto={producto} saludo="Hola" />
+                    )
+                } )}
+            </div>
         
         </>
     )
