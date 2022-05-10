@@ -8,7 +8,7 @@ export const Item = (props) => {
             <div className="container-item-detail">
                 
                 <div>
-                    <img className="img-producto" src={props.producto.img}/>
+                    <img className="img-producto" src={props.producto.image}/>
                     <p>{props.producto.name}</p>
                     <p> Valor: {props.producto.valor}</p>
                     <p> Stock: {props.producto.stock}</p>

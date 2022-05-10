@@ -20,7 +20,7 @@ export const ItemDetail = ({producto}) => {
     return (
         <div>
 
-            <img src={producto.img} />
+            <img src={producto.image} />
             <h1>{producto.name}</h1>
             <p>{producto.valor}</p>
             <p>{producto.stock}</p>

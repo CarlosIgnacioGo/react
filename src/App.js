@@ -16,15 +16,15 @@ function App() {
     <CustomProvider>
       <div>
         <  NavBar />
-        < ItemDetailContainer/>
         
       </div>
 
       <Routes>
-        <Route path="/" element={ < ItemListContainer />}/>
-        <Route path="/detail/:id" element={ < ItemDetailContainer /> }></Route>
-        <Route path="/carrito" element={<Carrito/> }/>
-        <Route path="/cart" element={<Cart/> }/>
+        <Route path="/" exact element={< ItemListContainer/>} />
+        <Route path="/detail/:id" exact element={ < ItemDetailContainer /> }></Route>
+        <Route path="/carrito" exact element={<Carrito/> }/>
+        <Route path="/cart" exact element={<Cart/> }/>
+        
       </Routes>
 
       </CustomProvider>
