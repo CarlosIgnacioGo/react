@@ -22,6 +22,7 @@ export const ItemDetail = ({producto}) => {
 
             <img src={producto.image} />
             <h1>{producto.name}</h1>
+            <p>{producto.category}</p>
             <p>{producto.valor}</p>
             <p>{producto.stock}</p>
             <p>{producto.detail}</p>

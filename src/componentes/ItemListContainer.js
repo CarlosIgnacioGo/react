@@ -33,13 +33,13 @@ const ItemListContainer = (props) => {
         },200)
     });
 
-    const { categoryId } = useParams();
+    const { name } = useParams();
 
     useEffect ( () => {
         const productosCollection = collection(db, "items")
         getDocs(productosCollection)
         .then((result) => {
-            console.log("Carlos")
+            
             const docs = result.docs;
 
             const lista = docs.map ( (producto) => {
@@ -51,8 +51,17 @@ const ItemListContainer = (props) => {
 
                 return product;
             });
-            console.log(lista);
-            setProductos(lista);
+
+            if (name != undefined){
+                console.log("Carlos")
+                console.log(lista[0].category);
+                console.log(name);
+                const result_filter = lista.filter(doc => doc.category == name)
+                setProductos(result_filter);
+            }else{
+                setProductos(lista);
+            }
+            
         })
 
     //     const getItems = async () => {
@@ -101,7 +110,7 @@ const ItemListContainer = (props) => {
 
         
     //     getItems()
-    }, [])
+    }, [name])
 
 
 

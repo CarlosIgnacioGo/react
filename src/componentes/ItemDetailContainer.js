@@ -11,81 +11,18 @@ const ItemDetailContainer = () => {
 
     const {id} = useParams ()
 
-    /*let test = db.collection('items')
-    .doc(id)
-     .get()
-     .then(doc=>{
-      const data = doc.data();
-                
-    });*/
-    
+    const productoCollection = collection(db, 'items')
+
+    const getProducto = async () => {
+      const data = await getDocs(productoCollection)
+      const result = data.docs.map( doc => ({id: id, ...doc.data()}));
+      const result_filter = result.filter(doc => doc.id == id)[0]
+      console.log(result_filter)
+      setProducto(result_filter)
+    }
 
     useEffect ( () => {
-        console.log("esto es:", id);
-      
-
-        /*collection(db,'items').where("id", '==', id)
-        .get()
-        .then((querySnapshot) => {
-            console.log("la consulta es:", querySnapshot);
-          querySnapshot.forEach((doc) => {
-            console.log(doc.id, "=>", doc.data());
-          });
-        });*/
-        
-        /*const productosCollection = collection(db, `items`).where("id",id)
-        getDocs(productosCollection)
-        .then((result) => {
-            console.log("result es:", result)
-            const docs = result.docs;
-
-            
-        })
-        console.log("produc:", productosCollection);*/
-        
-
-        /*console.log("el id es:", id)
-        const productosCollection = collection(db, "items").doc(id)
-        getDocs(productosCollection)
-        .then((result) => {
-        console.log("resultado es:", result)
-            
-        })*/
-
-        
-        //console.log("el producto es: ", productsCollection)
-        //const ref = doc(productsCollection,id)
-        
-    
-        // const hola = productsCollection.doc(id)
-        //  getDoc(ref)
-        // .then((result)=>{
-        //      console.log(result.data())
-        //  setProducto(result.data());
-        // })
-
-        // const productsCollection = collection(db, "items");
-        // const ref = doc(productsCollection,id)
-        // getDoc(ref)
-        // .then((result)=>{
-        //     setProducto(result.data());
-        // })
-
-
-
-        // promesaDetail
-        // .then((producto) => {
-        //     console.log("estoy aqui" + id)
-        //     if (id) {
-        //         console.log(typeof id)
-                
-        //         setProducto(producto.find(el => el.id === id));
-        //         console.log ("Estos son los:" +producto );
-        //     }else{
-        //         setProducto ("No existe")
-        //     }
-        // }) 
-
+      getProducto()
     }, [id])
    
     return (

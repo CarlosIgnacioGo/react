@@ -24,6 +24,7 @@ function App() {
         <Route path="/detail/:id" exact element={ < ItemDetailContainer /> }></Route>
         <Route path="/carrito" exact element={<Carrito/> }/>
         <Route path="/cart" exact element={<Cart/> }/>
+        <Route path="/categories/:name" exact element={<ItemListContainer/> }/>
         
       </Routes>
 

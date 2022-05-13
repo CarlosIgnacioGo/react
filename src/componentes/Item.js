@@ -10,6 +10,7 @@ export const Item = (props) => {
                 <div>
                     <img className="img-producto" src={props.producto.image}/>
                     <p>{props.producto.name}</p>
+                    <p>{props.producto.category}</p>
                     <p> Valor: {props.producto.valor}</p>
                     <p> Stock: {props.producto.stock}</p>
                     < Link to={`/detail/${props.producto.id}`}>
