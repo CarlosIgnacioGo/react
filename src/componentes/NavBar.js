@@ -28,7 +28,7 @@ const NavBar = () => {
                     )
                 })}
 
-                <NavLink to="/carrito">
+                <NavLink to="/cart">
                     <CarWidget/>
                 </NavLink>
             </nav>

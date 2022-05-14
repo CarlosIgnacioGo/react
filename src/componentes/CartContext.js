@@ -24,8 +24,6 @@ const CustomProvider = ({children}) => {
         return true
     }
 
-    console.log(datos);
-
     const removeItem = (id) => {
         const eliminar = datos.filter (e => e.id !== id)
         setDatos(eliminar);

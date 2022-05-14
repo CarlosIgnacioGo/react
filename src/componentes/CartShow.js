@@ -12,7 +12,7 @@ const eliminarProduct = () => {
     return (
         
         <div>
-            <img className="img-producto" src={datos.img}/>
+            <img className="img-producto" src={datos.image}/>
             <p>{datos.name}</p>
             <p> Valor: {datos.valor}</p>
             <p> Stock: {datos.stock}</p>
